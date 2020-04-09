@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-03-26 00:01:51
- * @LastEditTime: 2020-03-26 22:38:18
+ * @LastEditTime: 2020-04-09 23:00:54
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /api/Users/linboxuan/vscodeProjects/blog/app.js
@@ -22,6 +22,7 @@ onerror(app)
 
 //db
 mongoose.connect(config.mongo.master, {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.set('useFindAndModify', true);
 mongoose.connection.on("open", () => {
     console.log("mongoose connection succss")
 })
