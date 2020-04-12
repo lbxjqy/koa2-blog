@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-02 04:49:23
- * @LastEditTime: 2020-04-09 23:58:25
+ * @LastEditTime: 2020-04-13 03:53:58
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /api/Users/linboxuan/vscodeProjects/blog/service/articleService/index.js
@@ -11,10 +11,11 @@ var Article = require('../../models/article')
 module.exports = {
     create: async (ctx, next) => {
         let body = ctx.request.body;
+        console.log(body)
         let article = {
             title: body.title,
             content: body.content,
-            descript: body.descript,
+            describe: body.describe,
             tag: body.tag,
         }
         let a = await Article.create(article)
@@ -41,7 +42,7 @@ module.exports = {
         let article = {
             title: body.title,
             content: body.content,
-            descript: body.descript,
+            describe: body.describe,
             tag: body.tag,
         }
         let a = await Article.findOneAndUpdate({_id:body.articleId},{ $set: article})

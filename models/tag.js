@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-03-26 19:15:14
- * @LastEditTime: 2020-04-09 17:14:19
+ * @LastEditTime: 2020-04-12 02:23:02
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /api/Users/linboxuan/vscodeProjects/koa2-blog/models/tag.js
@@ -15,7 +15,7 @@ const Schema = mongoose.Schema
  */ 
 const tagSchema = new Schema({
     name:{ type: String },
-    descript: { type: String },//描述
+    describe: { type: String },//描述
     status: { type: Boolean, default: true },
     createdAt: { type: Date, default: Date.now },
     updateAt: { type: Date, default: Date.now },

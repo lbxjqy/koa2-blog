@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-03-26 00:01:51
- * @LastEditTime: 2020-04-09 23:00:54
+ * @LastEditTime: 2020-04-11 04:27:44
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /api/Users/linboxuan/vscodeProjects/blog/app.js
@@ -37,6 +37,15 @@ app.use(bodyparser({
 app.use(json())
 app.use(logger())
 app.use(require('koa-static')(__dirname + '/public'))
+app.use(async (ctx, next) => {
+  if (ctx.request.method == "OPTIONS") {
+    ctx.response.status = 200
+  }
+  ctx.set("Access-Control-Allow-Origin", "*")
+  ctx.set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PUT");
+  ctx.set("Access-Control-Allow-Headers", 'Content-Type, Content-Length, Authorization, Accept, X-Requested-With, Access-Token, x-token');
+  await next()
+});
 
 app.use(views(__dirname + '/views', {
   extension: 'pug'

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-02 04:54:45
- * @LastEditTime: 2020-04-09 23:56:03
+ * @LastEditTime: 2020-04-12 02:36:27
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /api/Users/linboxuan/vscodeProjects/blog/models/article.js
@@ -16,7 +16,7 @@ const Schema = mongoose.Schema
 const articleSchema = new Schema({
     title:{ type: String },
     content: { type: String },//内容
-    descript: { type: String },//描述
+    describe: { type: String },//描述
     tag: [{ type: mongoose.Schema.Types.ObjectId, ref: 'tag'}],//标签
     meta: {
 		  views: { type: Number, default: 0 }, // 浏览数
