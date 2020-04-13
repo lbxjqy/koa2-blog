@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-03-26 20:23:35
- * @LastEditTime: 2020-04-12 23:16:46
+ * @LastEditTime: 2020-04-14 00:01:31
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /api/Users/linboxuan/vscodeProjects/blog/service/tagServive/index.js
@@ -55,6 +55,17 @@ module.exports = {
         ctx.body = {
             code: 10000,
             msg: 'SUCCESS'
+        }
+        next();
+    },
+    //article 添加页面 作为tag下拉框使用
+    nameList: async (ctx, next) => {
+        //_id默认返回，只返回_id和name字段
+        let list = await Tag.find({status: true}, { name: 1});
+        ctx.body = {
+            code: 10000,
+            msg: 'SUCCESS',
+            data: list
         }
         next();
     }
