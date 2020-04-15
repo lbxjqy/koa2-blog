@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-02 04:49:23
- * @LastEditTime: 2020-04-13 03:53:58
+ * @LastEditTime: 2020-04-16 01:00:09
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /api/Users/linboxuan/vscodeProjects/blog/service/articleService/index.js
@@ -59,6 +59,17 @@ module.exports = {
         ctx.body = {
             code: 10000,
             msg: 'SUCCESS'
+        }
+        next();
+    },
+    getContent: async (ctx, next) => {
+        let query = ctx.request.query;
+        console.log(query)
+        let art = await Article.findById(query.id, {content: 1, title: 1});
+        ctx.body = {
+            code: 10000,
+            msg: 'SUCCESS',
+            data: art
         }
         next();
     }
