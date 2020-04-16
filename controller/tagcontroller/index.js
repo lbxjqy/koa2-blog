@@ -7,7 +7,7 @@
  * @FilePath: /api/Users/linboxuan/vscodeProjects/blog/controller/tagcontroller/index.js
  */
 var router = require('koa-router')({
-    prefix: '/api/tag'
+    prefix: '/api/admin/tag'
 });
 var tagService = require('../../service/tagService')
 

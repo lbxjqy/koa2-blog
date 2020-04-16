@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-02 04:49:23
- * @LastEditTime: 2020-04-16 01:00:09
+ * @LastEditTime: 2020-04-17 03:40:34
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /api/Users/linboxuan/vscodeProjects/blog/service/articleService/index.js
@@ -55,7 +55,7 @@ module.exports = {
     },
     delete: async (ctx, next) => {
         let body = ctx.request.body;
-        let t = await Article.findOneAndUpdate({_id:body.articleId}, { $set: {status: false}})
+        let t = await Article.findOneAndUpdate({_id:body.articleId}, { $set: {status: false}});
         ctx.body = {
             code: 10000,
             msg: 'SUCCESS'
@@ -66,6 +66,16 @@ module.exports = {
         let query = ctx.request.query;
         console.log(query)
         let art = await Article.findById(query.id, {content: 1, title: 1});
+        ctx.body = {
+            code: 10000,
+            msg: 'SUCCESS',
+            data: art
+        }
+        next();
+    },
+    getModifyContent: async(ctx, next) => {
+        let query = ctx.request.query;
+        let art = await Article.findById(query.id, {content: 1, title: 1, describe: 1, tag: 1});
         ctx.body = {
             code: 10000,
             msg: 'SUCCESS',
