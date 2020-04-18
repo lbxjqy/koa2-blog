@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-17 03:38:31
- * @LastEditTime: 2020-04-18 03:29:20
+ * @LastEditTime: 2020-04-19 03:34:27
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /api/Users/linboxuan/vscodeProjects/koa2-blog/service/articleService/api.js
@@ -27,6 +27,9 @@ module.exports = {
         }
         if(q.tag) {
             query.tag = {$in:q.tag}
+        }
+        if(q.title) {
+            query.title = {$regex: q.title}
         }
         let list = await Article.find(query); 
         ctx.response.status = 200;

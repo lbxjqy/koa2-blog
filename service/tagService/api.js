@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-17 03:38:36
- * @LastEditTime: 2020-04-17 23:14:05
+ * @LastEditTime: 2020-04-18 18:32:32
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /api/Users/linboxuan/vscodeProjects/koa2-blog/service/tagService/api.js
@@ -13,6 +13,7 @@ module.exports = {
     homePageList: async (ctx, next) => {
         // 逻辑是根据文章表的tag字段进行分组，并计算count
         const tagList = await Article.aggregate([
+            { $match: { status: true}},
 			{ $unwind: '$tag' },
 			{
 				$group: {
