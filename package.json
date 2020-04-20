@@ -8,6 +8,17 @@
     "prd": "pm2 start bin/www",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "apps": [
+    {
+      "name": "ko2-blog",
+      "script": "./bin/www",
+      "instances": -1,
+      "exec_mode": "cluster",
+      "env": {
+        "PORT": "3000"
+      }
+    }
+  ],
   "dependencies": {
     "debug": "^4.1.1",
     "koa": "^2.7.0",
