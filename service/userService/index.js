@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-11 02:24:40
- * @LastEditTime: 2020-04-11 04:52:19
+ * @LastEditTime: 2020-04-21 23:28:31
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /api/Users/linboxuan/vscodeProjects/koa2-blog/service/userService/index.js
@@ -15,7 +15,7 @@ module.exports = {
             account: body.account,
             password: body.password
         }
-        let r = await User.find(u)
+        let r = await User.findOne(u)
         if(!r) {
             ctx.response.status = 200;
             ctx.body = {
@@ -28,7 +28,7 @@ module.exports = {
             ctx.body = {
                 code: 10000,
                 msg: 'SUCCESS',
-                token: 'user_token'
+                token: r.token
             }
             next();
         }
