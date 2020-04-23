@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-17 03:38:31
- * @LastEditTime: 2020-04-19 03:34:27
+ * @LastEditTime: 2020-04-23 18:30:14
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /api/Users/linboxuan/vscodeProjects/koa2-blog/service/articleService/api.js
@@ -42,8 +42,15 @@ module.exports = {
     },
     articleGetContent: async (ctx, next) => {
         let query = ctx.request.query;
-        console.log(query)
-        let art = await Article.findById(query.id, {content: 1, title: 1});
+        // let art = await Article.findById(query.id, {content: 1, title: 1});
+        // 更新views+=1 并返回title content
+        let art = await Article.findByIdAndUpdate(query.id, {$inc: {"meta.views": 1}},{select: {content: 1, title: 1}})
+        if(!art) {
+            ctx.body = {
+                code: 10001,
+                msg: 'NOT FOUNT ARTICLE',
+            }
+        }
         ctx.body = {
             code: 10000,
             msg: 'SUCCESS',
