@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-17 03:38:31
- * @LastEditTime: 2020-04-23 18:30:14
+ * @LastEditTime: 2020-04-25 03:02:04
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /api/Users/linboxuan/vscodeProjects/koa2-blog/service/articleService/api.js
@@ -26,6 +26,7 @@ module.exports = {
             status: true
         }
         if(q.tag) {
+            // 包含
             query.tag = {$in:q.tag}
         }
         if(q.title) {
