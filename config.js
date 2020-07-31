@@ -9,7 +9,7 @@ if(platform == "DEV") {
 }
 
 if(platform == "PROD") {
-
+    config.mongo.master = 'mongodb://root:123456@39.97.208.148:27017/blog?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=false'
 }
 
 module.exports = config;

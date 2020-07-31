@@ -1,1 +1,1 @@
-module.exports = "DEV"
+module.exports = "PROD"
